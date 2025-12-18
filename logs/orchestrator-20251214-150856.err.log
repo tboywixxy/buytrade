@@ -1,0 +1,100 @@
+INFO:botocore.credentials:Found credentials from IAM Role: mt5-orchestrator-role
+INFO:     Started server process [4652]
+INFO:     Waiting for application startup.
+INFO:orchestrator:Orchestrator starting. Initial sync.
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9100 (Press CTRL+C to quit)
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuser001': 'i-09ac44b160f1f694a', 'testuser002': 'i-09ac44b160f1f694a', 'testuser003': 'i-09ac44b160f1f694a', 'testuser12': 'i-09ac44b160f1f694a'}
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4652]

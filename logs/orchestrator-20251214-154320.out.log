@@ -1,0 +1,6 @@
+INFO:     102.88.109.28:18181 - "POST /place-trade HTTP/1.1" 400 Bad Request
+INFO:     102.88.109.28:18181 - "POST /connect HTTP/1.1" 200 OK
+INFO:     102.88.109.28:18182 - "POST /connect HTTP/1.1" 200 OK
+INFO:     102.88.109.28:18189 - "POST /place-trade HTTP/1.1" 200 OK
+INFO:     102.88.109.28:18190 - "POST /place-trade HTTP/1.1" 400 Bad Request
+INFO:     102.88.109.28:18191 - "POST /place-trade HTTP/1.1" 400 Bad Request

@@ -1,0 +1,312 @@
+INFO:     Started server process [4484]
+INFO:     Waiting for application startup.
+INFO:     Started server process [4600]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [4668]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started server process [4720]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
+INFO:     Started server process [4816]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+INFO:     Started server process [4876]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+INFO:     Started server process [4988]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8005 (Press CTRL+C to quit)
+INFO:     Started server process [4300]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8006 (Press CTRL+C to quit)
+INFO:     Started server process [4028]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8007 (Press CTRL+C to quit)
+INFO:     Started server process [3628]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8008 (Press CTRL+C to quit)
+INFO:     Started server process [3296]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8009 (Press CTRL+C to quit)
+INFO:     Started server process [5020]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started server process [3700]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8011 (Press CTRL+C to quit)
+INFO:     Started server process [3288]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8012 (Press CTRL+C to quit)
+INFO:     Started server process [844]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8013 (Press CTRL+C to quit)
+INFO:     Started server process [5376]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8014 (Press CTRL+C to quit)
+INFO:     Started server process [6216]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8015 (Press CTRL+C to quit)
+INFO:     Started server process [6792]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8016 (Press CTRL+C to quit)
+INFO:     Started server process [5652]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8017 (Press CTRL+C to quit)
+INFO:     Started server process [1584]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8018 (Press CTRL+C to quit)
+INFO:     Started server process [2136]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8019 (Press CTRL+C to quit)
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9000 (Press CTRL+C to quit)
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+Exception in thread Thread-1 (trash_janitor):
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python310\lib\threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\MT5\app\worker_main.py", line 222, in trash_janitor
+    for name in os.listdir(TRASH_DIR):
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\MT5\\instances\\_trash'
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Finished server process [5020]
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3700]
+INFO:     Application shutdown complete.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Finished server process [4720]
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Finished server process [4600]
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3628]
+INFO:     Finished server process [4028]
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Finished server process [5376]
+INFO:     Finished server process [3288]
+INFO:     Finished server process [5652]
+INFO:     Finished server process [4816]
+INFO:     Finished server process [4484]
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4876]
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Finished server process [4988]
+INFO:     Finished server process [2136]
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [6216]
+INFO:     Finished server process [1584]
+INFO:     Application shutdown complete.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [6792]
+INFO:     Finished server process [4300]
+INFO:     Finished server process [3296]
+INFO:     Finished server process [4668]
+INFO:     Finished server process [844]

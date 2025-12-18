@@ -1,0 +1,50 @@
+INFO:     127.0.0.1:49707 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49712 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49716 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49720 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49724 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49728 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49732 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49736 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49744 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49748 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49752 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49756 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49760 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49765 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49771 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49778 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49783 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49787 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49792 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49799 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49800 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49798 - "POST /mt5/open-and-login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49805 - "GET /mt5/account-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49806 - "GET /mt5/list-symbols HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49782 - "POST /connect HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49816 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49817 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49818 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49821 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49822 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49823 - "POST /place-trade HTTP/1.1" 400 Bad Request
+INFO:     18.196.68.128:49824 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49825 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49827 - "POST /mt5/place-order HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49826 - "POST /place-trade HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49829 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49831 - "GET /mt5/list-symbols HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:49832 - "POST /mt5/place-order HTTP/1.1" 400 Bad Request
+INFO:     18.196.68.128:49830 - "POST /place-trade HTTP/1.1" 400 Bad Request
+INFO:     18.196.68.128:49833 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49834 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49844 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49820 - "POST /mt5/open-and-login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49850 - "GET /mt5/account-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49851 - "GET /mt5/list-symbols HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49819 - "POST /connect HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49863 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49868 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     18.196.68.128:49869 - "GET /metrics HTTP/1.1" 200 OK

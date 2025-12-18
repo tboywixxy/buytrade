@@ -1,0 +1,31 @@
+INFO:botocore.credentials:Found credentials from IAM Role: mt5-orchestrator-role
+INFO:     Started server process [2988]
+INFO:     Waiting for application startup.
+INFO:orchestrator:Orchestrator starting. Initial sync.
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9100 (Press CTRL+C to quit)
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}
+INFO:orchestrator:sync_instances_state: 2 instances; assignments={'testuse': 'i-09ac44b160f1f694a'}

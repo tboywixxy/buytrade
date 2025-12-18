@@ -1,0 +1,6 @@
+INFO:     127.0.0.1:50337 - "GET /health HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57121 - "GET /instances HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50351 - "GET /health HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57124 - "GET /instances HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57142 - "GET /instances HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51015 - "GET /health HTTP/1.1" 200 OK

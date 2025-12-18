@@ -1,0 +1,3 @@
+INFO:     127.0.0.1:50129 - "GET /health HTTP/1.1" 200 OK
+INFO:     102.88.109.28:20050 - "GET /instances HTTP/1.1" 200 OK
+INFO:     102.88.109.28:20057 - "POST /connect HTTP/1.1" 200 OK

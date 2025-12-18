@@ -1,0 +1,11 @@
+INFO:     127.0.0.1:51048 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51082 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51132 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51140 - "GET /health HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57162 - "POST /place-trade HTTP/1.1" 400 Bad Request
+INFO:     102.88.109.226:57163 - "POST /connect HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57164 - "POST /place-trade HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57165 - "POST /connect HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57730 - "POST /place-trade HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57730 - "POST /place-trade HTTP/1.1" 200 OK
+INFO:     102.88.109.226:57731 - "GET /instances HTTP/1.1" 200 OK
