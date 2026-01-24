@@ -47,7 +47,7 @@ LOCAL_MANAGER_URL = os.getenv("LOCAL_MANAGER_URL", f"http://127.0.0.1:{MANAGER_P
 
 # ✅ NEW: assignment TTL so we don't overcount after manager idle-disconnect
 # Set this slightly above manager idle TTL (240s). Default 300s.
-ASSIGNMENT_TTL_SEC = int(os.getenv("ORCH_ASSIGNMENT_TTL_SEC", "300"))
+ASSIGNMENT_TTL_SEC = int(os.getenv("ORCH_ASSIGNMENT_TTL_SEC", "30"))
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger("orchestrator")

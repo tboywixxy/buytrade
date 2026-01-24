@@ -7,14 +7,14 @@ import re
 import shutil
 import json
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional, List, Tuple
 
 import requests
 from requests.exceptions import ReadTimeout, ConnectionError as ReqConnectionError
 from fastapi import FastAPI, HTTPException, Body, Query, Request
 from fastapi.responses import JSONResponse
 
-app = FastAPI(title="MT5 Manager (stable workers + reuse + idle disconnect)", version="1.9.0")
+app = FastAPI(title="MT5 Manager (stable workers + reuse + idle disconnect)", version="1.10.0")
 
 # ====== CONFIG ======
 INSTANCES_BASE = r"C:\MT5\instances"
@@ -24,15 +24,17 @@ PRESTART_PORTS = list(range(8000, 8019 + 1))
 DYNAMIC_BASE_PORT = 8050
 WORKER_HOST = "127.0.0.1"
 
-# ✅ 4-minute inactivity disconnect
+# ✅ 4-minute inactivity disconnect (unchanged)
 IDLE_TTL_SEC = int(os.getenv("IDLE_TTL_SEC", "240"))  # 4 mins
 REG_CLEAN_INTERVAL_SEC = int(os.getenv("REG_CLEAN_INTERVAL_SEC", "15"))  # check often for fast disconnect
 
-MAX_ACCOUNTS_PER_VPS = int(os.getenv("MAX_ACCOUNTS_PER_VPS", "10"))  # keep your safe density
+MAX_ACCOUNTS_PER_VPS = int(os.getenv("MAX_ACCOUNTS_PER_VPS", "10"))  # safe density
 
 # ✅ Disk retention (prevents infinite growth)
-# Delete user folders if not seen for X seconds.
 INSTANCE_RETENTION_SEC = int(os.getenv("INSTANCE_RETENTION_SEC", str(3 * 24 * 3600)))  # 3 days default
+
+# ✅ NEW: how often we verify "real active sessions" + cleanup dead sessions
+REAL_ACTIVE_REFRESH_SEC = float(os.getenv("REAL_ACTIVE_REFRESH_SEC", "5"))  # keep it small for fast updates
 
 SYMBOL_CACHE_PATH = Path(r"C:\MT5\symbol_cache.json")
 SYMBOL_CACHE: Dict[str, Dict[str, Any]] = {}
@@ -148,21 +150,6 @@ def worker_metrics(port: int) -> Optional[dict]:
         return None
     except Exception:
         return None
-
-
-# --- reuse worker if it already has this user loaded (survives manager restarts) ---
-def find_existing_worker_for_user(user_id: str) -> Optional[int]:
-    with STATE_LOCK:
-        ports = list(workers.keys())
-
-    for port in ports:
-        try:
-            m = worker_metrics(port)
-            if m and m.get("session_user") == user_id:
-                return port
-        except Exception:
-            continue
-    return None
 
 
 def worker_status(port: int) -> Optional[dict]:
@@ -304,7 +291,7 @@ def call_worker_open(port: int, user_id: str, login: int, password: str,
 
 
 def call_worker_disconnect_soft(port: int, user_id: str):
-    # ✅ NEW: soft disconnect — closes MT5 but keeps files
+    # ✅ soft disconnect — closes MT5 but keeps files
     url = f"http://{WORKER_HOST}:{port}/mt5/disconnect"
     try:
         requests.post(url, json={"user_id": user_id}, timeout=25)
@@ -313,7 +300,7 @@ def call_worker_disconnect_soft(port: int, user_id: str):
 
 
 def call_worker_logout_full(port: int, user_id: str):
-    # existing hard logout (deletes dirs)
+    # hard logout (deletes dirs)
     url = f"http://{WORKER_HOST}:{port}/mt5/logout"
     try:
         requests.post(url, json={"user_id": user_id}, timeout=25)
@@ -413,7 +400,7 @@ def resolve_symbol_from_cache(user_id: str, requested: str) -> str:
     return requested
 
 
-# ✅ NEW: release session without deleting instance dirs
+# ✅ release session without deleting instance dirs
 def release_user_session_soft(user_id: str):
     with STATE_LOCK:
         sess = user_sessions.pop(user_id, None)
@@ -421,9 +408,7 @@ def release_user_session_soft(user_id: str):
             port = sess["port"]
             if port in workers:
                 workers[port]["current_user"] = None
-
-    # Keep symbol cache (optional) to speed future resolution
-    # Do NOT delete instance dirs here
+    # Keep instance dirs + symbol cache
 
 
 # ✅ FULL delete (explicit logout)
@@ -448,7 +433,43 @@ def drop_user_full(user_id: str):
         save_symbol_cache()
 
 
-# ✅ NEW: janitor to delete stale user folders (prevents infinite disk growth)
+# ✅ NEW: "real active" calculation and stale cleanup
+def _is_session_really_active(user_id: str, port: int) -> bool:
+    st = worker_status(port)
+    if not st:
+        return False
+    return bool(st.get("terminal_running")) and bool(st.get("mt5_logged_in"))
+
+
+def compute_real_active_sessions_and_cleanup() -> Tuple[int, int]:
+    """
+    Returns: (real_active_count, cleaned_count)
+
+    - real_active_count: number of sessions whose worker reports terminal_running && mt5_logged_in
+    - cleaned_count: sessions removed because worker is not actually active anymore
+    """
+    with STATE_LOCK:
+        snapshot = list(user_sessions.items())
+
+    cleaned = 0
+    real_active = 0
+
+    for user_id, sess in snapshot:
+        port = sess.get("port")
+        if port is None:
+            continue
+
+        if _is_session_really_active(user_id, int(port)):
+            real_active += 1
+        else:
+            # stale in-memory session -> release it (soft)
+            release_user_session_soft(user_id)
+            cleaned += 1
+
+    return real_active, cleaned
+
+
+# ✅ janitor to delete stale user folders (prevents infinite disk growth)
 def retention_janitor():
     while True:
         time.sleep(60)
@@ -467,7 +488,7 @@ def retention_janitor():
                 # if user is active, skip
                 active = False
                 with STATE_LOCK:
-                    for uid, sess in user_sessions.items():
+                    for uid in user_sessions.keys():
                         if sanitize_user_id(uid) == user_folder:
                             active = True
                             break
@@ -489,7 +510,7 @@ def retention_janitor():
             pass
 
 
-# ✅ NEW: idle disconnect job (4 minutes)
+# ✅ idle disconnect job (4 minutes) (unchanged behavior)
 def idle_disconnect_job():
     while True:
         time.sleep(REG_CLEAN_INTERVAL_SEC)
@@ -507,9 +528,19 @@ def idle_disconnect_job():
                 port = sess["port"]
 
             if (now - last_seen) > IDLE_TTL_SEC:
-                # ✅ soft disconnect (keep files)
+                # soft disconnect (keep files)
                 call_worker_disconnect_soft(port, user_id)
                 release_user_session_soft(user_id)
+
+
+# ✅ NEW: fast "truth" refresher (keeps metrics accurate even if MT5 dies/crashes)
+def real_active_refresher():
+    while True:
+        time.sleep(REAL_ACTIVE_REFRESH_SEC)
+        try:
+            _real, _cleaned = compute_real_active_sessions_and_cleanup()
+        except Exception:
+            pass
 
 
 @app.on_event("startup")
@@ -521,6 +552,7 @@ def on_startup():
     prestart_workers()
     threading.Thread(target=idle_disconnect_job, daemon=True).start()
     threading.Thread(target=retention_janitor, daemon=True).start()
+    threading.Thread(target=real_active_refresher, daemon=True).start()
 
 
 @app.get("/health")
@@ -530,20 +562,32 @@ def health():
 
 @app.get("/metrics")
 def metrics():
+    # Build worker view
     with STATE_LOCK:
         active_workers = {p: {"current_user": w["current_user"], "last_used": w["last_used"]} for p, w in workers.items()}
-        active_sessions = len(user_sessions)
+        sessions_map_count = len(user_sessions)
 
     enriched = {}
     for port, base in active_workers.items():
         st = worker_status(port)
         enriched[port] = {**base, "status": st or {"ok": False, "error": "status_unavailable"}}
 
+    # ✅ "truth": count only really active MT5 sessions, and clean stale ones
+    real_active, cleaned = compute_real_active_sessions_and_cleanup()
+
     return {
         "manager": "running",
         "worker_count": len(active_workers),
         "workers": enriched,
-        "active_sessions": active_sessions,
+
+        # ✅ IMPORTANT: orchestrator reads this field to decide capacity.
+        # We now make it "real active terminals/logged-in sessions".
+        "active_sessions": real_active,
+
+        # extra debug fields
+        "active_sessions_map": sessions_map_count,
+        "stale_sessions_cleaned": cleaned,
+
         "max_accounts": MAX_ACCOUNTS_PER_VPS,
         "idle_ttl_sec": IDLE_TTL_SEC,
         "timestamp": time.time(),
@@ -552,7 +596,6 @@ def metrics():
 
 @app.get("/symbols")
 def list_symbols(user_id: str = Query(...), prefix: Optional[str] = Query(None)):
-    # ✅ symbols access counts as activity (you can remove this if you don’t want it to keep sessions alive)
     touch_user(user_id)
 
     syms = get_symbols_for_user(user_id)
@@ -560,6 +603,21 @@ def list_symbols(user_id: str = Query(...), prefix: Optional[str] = Query(None))
         p = prefix.lower()
         syms = [s for s in syms if s.lower().startswith(p)]
     return {"ok": True, "count": len(syms), "symbols": syms}
+
+
+# --- reuse worker if it already has this user loaded (survives manager restarts) ---
+def find_existing_worker_for_user(user_id: str) -> Optional[int]:
+    with STATE_LOCK:
+        ports = list(workers.keys())
+
+    for port in ports:
+        try:
+            m = worker_metrics(port)
+            if m and m.get("session_user") == user_id:
+                return port
+        except Exception:
+            continue
+    return None
 
 
 @app.post("/connect")
@@ -740,8 +798,7 @@ def place_trade(body: dict = Body(...)):
     }
 
     result = call_worker_place_order(port, worker_payload)
-    touch_user(user_id)  # ✅ activity resets 4-min timer
-
+    touch_user(user_id)
     return {"ok": True, "worker_port": port, "requested_symbol": symbol_req, "resolved_symbol": resolved, "result": result}
 
 
@@ -766,7 +823,7 @@ def modify_sltp(body: dict = Body(...)):
     }
 
     result = call_worker_modify_sltp(port, worker_payload)
-    touch_user(user_id)  # ✅ activity resets timer
+    touch_user(user_id)
     return {"ok": True, "worker_port": port, "result": result}
 
 
@@ -793,7 +850,7 @@ def close_trade(body: dict = Body(...)):
     }
 
     result = call_worker_close_trade(port, worker_payload)
-    touch_user(user_id)  # ✅ activity resets timer
+    touch_user(user_id)
     return {"ok": True, "worker_port": port, "result": result}
 
 

@@ -817,7 +817,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275223.2152956
+    "fetched_at": 1769286738.0528677
   },
   "loadtest_user_8": {
     "server": "Exness-MT5Trial9",
@@ -1227,7 +1227,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275223.2826357
+    "fetched_at": 1769286740.8286567
   },
   "loadtest_user_9": {
     "server": "Exness-MT5Trial9",
@@ -1637,7 +1637,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275223.203493
+    "fetched_at": 1769286739.2094288
   },
   "loadtest_user_10": {
     "server": "Exness-MT5Trial9",
@@ -2047,7 +2047,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275224.5234563
+    "fetched_at": 1769286738.6789737
   },
   "loadtest_user_12": {
     "server": "Exness-MT5Trial9",
@@ -3687,7 +3687,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275205.274759
+    "fetched_at": 1769286712.8502283
   },
   "loadtest_user_1": {
     "server": "Exness-MT5Trial9",
@@ -4097,7 +4097,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275205.3815901
+    "fetched_at": 1769286696.5324972
   },
   "loadtest_user_3": {
     "server": "Exness-MT5Trial9",
@@ -4507,7 +4507,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275205.3974211
+    "fetched_at": 1769286715.8346725
   },
   "loadtest_user_4": {
     "server": "Exness-MT5Trial9",
@@ -4917,7 +4917,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275206.7074885
+    "fetched_at": 1769286714.7309396
   },
   "loadtest_user_5": {
     "server": "Exness-MT5Trial9",
@@ -5327,7 +5327,7 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275206.7983105
+    "fetched_at": 1769286713.3306243
   },
   "loadtest_user_6": {
     "server": "Exness-MT5Trial9",
@@ -5737,6 +5737,6 @@
       "ZTOm",
       "METAm"
     ],
-    "fetched_at": 1769275206.7233596
+    "fetched_at": 1769286713.018294
   }
 }
