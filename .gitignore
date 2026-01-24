@@ -1,0 +1,23 @@
+﻿*.exe
+# ---- Runtime / generated ----
+instances/
+logs/
+pids/
+__pycache__/
+*.log
+*.pid
+
+# ---- Virtual envs ----
+manager_venv/
+worker_venv/
+venv/
+
+# ---- Secrets ----
+.env
+*.key
+*.pem
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
