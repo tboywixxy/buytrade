@@ -1,11 +1,4 @@
 ﻿# manager_main.py
-# ✅ Manager (stable workers + reuse + idle disconnect + real-active metrics)
-# - Prestarts worker pool
-# - Reuses existing worker sessions (survives manager restarts)
-# - Soft idle disconnect after IDLE_TTL_SEC (keeps files)
-# - Metrics report "active_sessions" as REAL active MT5 terminals/logged-in sessions
-# - Janitor deletes old user folders to prevent disk growth
-
 import os
 import subprocess
 import time
@@ -21,30 +14,29 @@ from requests.exceptions import ReadTimeout, ConnectionError as ReqConnectionErr
 from fastapi import FastAPI, HTTPException, Body, Query, Request
 from fastapi.responses import JSONResponse
 
-app = FastAPI(title="MT5 Manager (no ASG fleet)", version="2.0.0")
+app = FastAPI(title="MT5 Manager (stable workers + reuse + idle disconnect)", version="1.10.0")
 
 # ====== CONFIG ======
-INSTANCES_BASE = os.getenv("MT5_INSTANCES_ROOT", r"C:\MT5\instances")
-BROKERS_DIR = os.getenv("MT5_BROKERS_DIR", r"C:\MT5\brokers")
+INSTANCES_BASE = r"C:\MT5\instances"
+BROKERS_DIR = r"C:\MT5\brokers"
 
-PRESTART_PORTS = list(range(int(os.getenv("PRESTART_PORT_START", "8000")),
-                            int(os.getenv("PRESTART_PORT_END", "8019")) + 1))
-DYNAMIC_BASE_PORT = int(os.getenv("DYNAMIC_BASE_PORT", "8050"))
-WORKER_HOST = os.getenv("WORKER_HOST", "127.0.0.1")
+PRESTART_PORTS = list(range(8000, 8019 + 1))
+DYNAMIC_BASE_PORT = 8050
+WORKER_HOST = "127.0.0.1"
 
-# ✅ 4-minute inactivity disconnect (default)
-IDLE_TTL_SEC = int(os.getenv("IDLE_TTL_SEC", "240"))
-REG_CLEAN_INTERVAL_SEC = int(os.getenv("REG_CLEAN_INTERVAL_SEC", "15"))
+# ✅ 4-minute inactivity disconnect (unchanged)
+IDLE_TTL_SEC = int(os.getenv("IDLE_TTL_SEC", "240"))  # 4 mins
+REG_CLEAN_INTERVAL_SEC = int(os.getenv("REG_CLEAN_INTERVAL_SEC", "15"))  # check often for fast disconnect
 
-MAX_ACCOUNTS_PER_VPS = int(os.getenv("MAX_ACCOUNTS_PER_VPS", "10"))
+MAX_ACCOUNTS_PER_VPS = int(os.getenv("MAX_ACCOUNTS_PER_VPS", "10"))  # safe density
 
-# ✅ Disk retention
-INSTANCE_RETENTION_SEC = int(os.getenv("INSTANCE_RETENTION_SEC", str(3 * 24 * 3600)))  # 3 days
+# ✅ Disk retention (prevents infinite growth)
+INSTANCE_RETENTION_SEC = int(os.getenv("INSTANCE_RETENTION_SEC", str(3 * 24 * 3600)))  # 3 days default
 
-# ✅ fast "truth" refresh
-REAL_ACTIVE_REFRESH_SEC = float(os.getenv("REAL_ACTIVE_REFRESH_SEC", "5"))
+# ✅ NEW: how often we verify "real active sessions" + cleanup dead sessions
+REAL_ACTIVE_REFRESH_SEC = float(os.getenv("REAL_ACTIVE_REFRESH_SEC", "5"))  # keep it small for fast updates
 
-SYMBOL_CACHE_PATH = Path(os.getenv("SYMBOL_CACHE_PATH", r"C:\MT5\symbol_cache.json"))
+SYMBOL_CACHE_PATH = Path(r"C:\MT5\symbol_cache.json")
 SYMBOL_CACHE: Dict[str, Dict[str, Any]] = {}
 
 workers: Dict[int, Dict[str, Any]] = {}
@@ -67,7 +59,7 @@ def get_user_lock(user_id: str) -> threading.Lock:
 
 
 # ---------------------------
-# Error shaping
+# Error shaping (important)
 # ---------------------------
 @app.exception_handler(HTTPException)
 async def http_exc_handler(request: Request, exc: HTTPException):
@@ -189,17 +181,17 @@ def start_worker_process(port: int):
     env = os.environ.copy()
     env["MT5_INSTANCES_ROOT"] = INSTANCES_BASE
     env["MT5_BROKERS_DIR"] = BROKERS_DIR
-    env["MT5_BASE_DIR"] = env.get("MT5_BASE_DIR", r"C:\MT5\mt5-template")
+    env["MT5_BASE_DIR"] = r"C:\MT5\mt5-template"
     env["MT5_WORKER_PORT"] = str(port)
 
-    worker_python = env.get("WORKER_PYTHON", r"C:\MT5\worker_venv\Scripts\python.exe")
+    worker_python = r"C:\MT5\worker_venv\Scripts\python.exe"
     cmd = [
         worker_python, "-m", "uvicorn", "worker_main:app",
         "--host", WORKER_HOST, "--port", str(port),
         "--log-level", "info",
     ]
 
-    proc = subprocess.Popen(cmd, env=env, cwd=env.get("WORKER_CWD", r"C:\MT5\app"))
+    proc = subprocess.Popen(cmd, env=env, cwd=r"C:\MT5\app")
     ok = wait_for_worker_ready(port)
     if not ok:
         try:
@@ -223,7 +215,7 @@ def prestart_workers():
             print(f"[prestart_workers] failed to start worker on port {port}: {e}")
 
     if ok_count == 0:
-        raise RuntimeError("No workers could be started; check ports range is free.")
+        raise RuntimeError("No workers could be started; check ports 8000-8019 are free.")
 
 
 def start_dynamic_worker() -> int:
@@ -283,7 +275,7 @@ def call_worker_open(port: int, user_id: str, login: int, password: str,
         except (ReqConnectionError, ReadTimeout):
             time.sleep(1.0)
     else:
-        release_user_session_soft(user_id)
+        release_user_session_soft(user_id)  # don’t delete files
         raise HTTPException(502, {"error": "worker_unreachable", "message": f"worker on port {port} did not respond", "port": port})
 
     try:
@@ -299,6 +291,7 @@ def call_worker_open(port: int, user_id: str, login: int, password: str,
 
 
 def call_worker_disconnect_soft(port: int, user_id: str):
+    # ✅ soft disconnect — closes MT5 but keeps files
     url = f"http://{WORKER_HOST}:{port}/mt5/disconnect"
     try:
         requests.post(url, json={"user_id": user_id}, timeout=25)
@@ -307,6 +300,7 @@ def call_worker_disconnect_soft(port: int, user_id: str):
 
 
 def call_worker_logout_full(port: int, user_id: str):
+    # hard logout (deletes dirs)
     url = f"http://{WORKER_HOST}:{port}/mt5/logout"
     try:
         requests.post(url, json={"user_id": user_id}, timeout=25)
@@ -439,8 +433,8 @@ def drop_user_full(user_id: str):
         save_symbol_cache()
 
 
-# ✅ "real active" calculation and stale cleanup
-def _is_session_really_active(port: int) -> bool:
+# ✅ NEW: "real active" calculation and stale cleanup
+def _is_session_really_active(user_id: str, port: int) -> bool:
     st = worker_status(port)
     if not st:
         return False
@@ -448,6 +442,12 @@ def _is_session_really_active(port: int) -> bool:
 
 
 def compute_real_active_sessions_and_cleanup() -> Tuple[int, int]:
+    """
+    Returns: (real_active_count, cleaned_count)
+
+    - real_active_count: number of sessions whose worker reports terminal_running && mt5_logged_in
+    - cleaned_count: sessions removed because worker is not actually active anymore
+    """
     with STATE_LOCK:
         snapshot = list(user_sessions.items())
 
@@ -459,9 +459,10 @@ def compute_real_active_sessions_and_cleanup() -> Tuple[int, int]:
         if port is None:
             continue
 
-        if _is_session_really_active(int(port)):
+        if _is_session_really_active(user_id, int(port)):
             real_active += 1
         else:
+            # stale in-memory session -> release it (soft)
             release_user_session_soft(user_id)
             cleaned += 1
 
@@ -494,6 +495,7 @@ def retention_janitor():
                 if active:
                     continue
 
+                # last modified heuristic
                 try:
                     mtime = os.path.getmtime(full_user)
                 except Exception:
@@ -508,7 +510,7 @@ def retention_janitor():
             pass
 
 
-# ✅ idle disconnect job
+# ✅ idle disconnect job (4 minutes) (unchanged behavior)
 def idle_disconnect_job():
     while True:
         time.sleep(REG_CLEAN_INTERVAL_SEC)
@@ -526,16 +528,17 @@ def idle_disconnect_job():
                 port = sess["port"]
 
             if (now - last_seen) > IDLE_TTL_SEC:
+                # soft disconnect (keep files)
                 call_worker_disconnect_soft(port, user_id)
                 release_user_session_soft(user_id)
 
 
-# ✅ fast truth refresher (keeps metrics accurate even if MT5 dies/crashes)
+# ✅ NEW: fast "truth" refresher (keeps metrics accurate even if MT5 dies/crashes)
 def real_active_refresher():
     while True:
         time.sleep(REAL_ACTIVE_REFRESH_SEC)
         try:
-            _ = compute_real_active_sessions_and_cleanup()
+            _real, _cleaned = compute_real_active_sessions_and_cleanup()
         except Exception:
             pass
 
@@ -554,12 +557,7 @@ def on_startup():
 
 @app.get("/health")
 def health():
-    return {
-        "status": "healthy",
-        "timestamp": time.time(),
-        "idle_ttl_sec": IDLE_TTL_SEC,
-        "max_accounts": MAX_ACCOUNTS_PER_VPS
-    }
+    return {"status": "healthy", "timestamp": time.time(), "idle_ttl_sec": IDLE_TTL_SEC, "max_accounts": MAX_ACCOUNTS_PER_VPS}
 
 
 @app.get("/metrics")
@@ -574,7 +572,7 @@ def metrics():
         st = worker_status(port)
         enriched[port] = {**base, "status": st or {"ok": False, "error": "status_unavailable"}}
 
-    # "truth": count only really active MT5 sessions, and clean stale ones
+    # ✅ "truth": count only really active MT5 sessions, and clean stale ones
     real_active, cleaned = compute_real_active_sessions_and_cleanup()
 
     return {
@@ -582,10 +580,11 @@ def metrics():
         "worker_count": len(active_workers),
         "workers": enriched,
 
-        # ✅ Orchestrator reads this to decide capacity
+        # ✅ IMPORTANT: orchestrator reads this field to decide capacity.
+        # We now make it "real active terminals/logged-in sessions".
         "active_sessions": real_active,
 
-        # debug fields
+        # extra debug fields
         "active_sessions_map": sessions_map_count,
         "stale_sessions_cleaned": cleaned,
 
@@ -857,6 +856,7 @@ def close_trade(body: dict = Body(...)):
 
 @app.post("/logout")
 def logout(body: dict = Body(...)):
+    # explicit logout = full cleanup (delete dirs)
     user_id = body.get("user_id") or body.get("userId") or body.get("mt5_account_id")
     if not user_id:
         raise HTTPException(400, {"error": "missing_user_id", "message": "Missing user_id / userId / mt5_account_id in JSON body."})
@@ -872,7 +872,7 @@ def logout(body: dict = Body(...)):
             drop_user_full(user_id)
             return {"ok": True, "user_id": user_id, "logged_out": True, "mode": "session_logout_full"}
 
-        # broadcast full logout (in case session map was lost)
+        # broadcast full logout
         with STATE_LOCK:
             ports = list(workers.keys())
         for p in ports:
